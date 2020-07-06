@@ -84,6 +84,7 @@ if [[ $1 == kur ]];then
 	git clone https://github.com/termux-egitim/ngrok
 	cd ngrok
 	bash kurulum.sh
+	exit
 fi
 menu
 
