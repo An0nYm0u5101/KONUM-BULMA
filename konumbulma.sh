@@ -79,6 +79,12 @@ else
 	menu
 fi
 }
+if [[ $1 == kur ]];then
+	pkg install php -y
+	git clone https://github.com/termux-egitim/ngrok
+	cd ngrok
+	bash kurulum.sh
+fi
 menu
 
 

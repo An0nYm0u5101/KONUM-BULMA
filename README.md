@@ -1,3 +1,4 @@
+konumbulma
 
 Konum Bulma Aracı
 
