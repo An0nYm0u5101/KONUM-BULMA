@@ -1,6 +1,6 @@
 konumbulma
 
-GÜNCELLEME1
+Güncelkeme1 09.07.2020
 
 Konum Bulma Aracı
 
