@@ -1,44 +1,59 @@
 #!/bin/bash
-#http://www.network-science.de/ascii/
-#cyberlarge
-banner() {
-	echo
 
-	echo -e "\e[32m
+#################### GÜNLER ####################
 
+pazartesi=$(date |grep -o Mon)
+sali=$(date |grep -o Tue)
+carsamba=$(date |grep -o Wed)
+persembe=$(date |grep -o Thu)
+cuma=$(date |grep -o Fri)
+cumartesi=$(date |grep -o Sat)
+pazar=$(date |grep -o Sun)
 
-            \e[32m                             \e[31m .___.
-            \e[32m          /)              \e[31m ,-^     ^-.
-            \e[32m         //             \e[31m  /           /
-            \e[32m--------| |--------------\e[31m/  __     __  /\e[32m-------------------___
-            \e[32m|WMWMWMW| |>>>>>>>>>>>>>\e[31m | />>\   />>\ |\e[32m>>>>>>>>>>>>>>>>>>>>>>:>
-	    \e[32m--------| |--------------\e[31m| \__/   \__/ |\e[32m-------------------^^
-            \e[32m         //               \e[31m\    /|\    /
-            \e[32m 	      \)               \e[31m\   \_/   /
-            \e[32m                            \e[31m|       |
-            \e[32m                            \e[31m|+H+H+H+|
-            \e[32m                           \e[31m \       /
-            \e[32m                             \e[31m^-----^
+#################### GÜNLERE GÖRE RENKLER ####################
 
-                           _  _____  __   _ _     _ _______
-                     |____/  |     | | \  | |     | |  |  |
-                     |    \_ |_____| |  \_| |_____| |  |  |
-                                       
+if [[ $pazartesi == Mon ]];then
+	renk1='\e[0m'
+	renk2='\e[32m'
+elif [[ $sali == Tue ]];then
+	renk1='\e[0m'
+	renk2='\e[31m'
+elif [[ $carsamba == Wed ]];then
+	renk1='\e[0m'
+	renk2='\e[33m'
+elif [[ $persembe == Thu ]];then
+	renk1='\e[0m'
+	renk2='\e[34m'
+elif [[ $cuma == Fri ]];then
+	renk1='\e[0m'
+	renk2='\e[36m'
+elif [[ $cumartesi == Sat ]];then
+	renk1='\e[31m'
+	renk2='\e[34m'
+elif [[ $oazar == Sun ]];then
+	renk1='\e[33m'
+	renk2='\e[34m'
+fi
+
+#################### BANNER ####################
+
+printf "
+$renk1
+
+      _     _  _____  __   _ _     _ _______
+      |____/  |     | | \  | |     | |  |  |
+      |    \_ |_____| |  \_| |_____| |  |  |
+$renk2
                      ______  _     _        _______ _______
                      |_____] |     | |      |  |  | |_____|
                      |_____] |_____| |_____ |  |  | |     |
-                                       
 
-                \e[1;33m
 
- [*] İNSTAGRAM \e[1;31m>>\e[1;32m @termuxegitim\e[1;33m
+           \e[31m////////// \e[32mTERMUX EĞİTİM \e[31m//////////\e[32m
+   
+           Coded By  \e[31m>\e[0m UMUT_KARA\e[32m
+           İNSTAGRAM \e[31m>\e[0m termuxegitim\e[32m
+           GİTHUB    \e[31m>\e[0m termux-egitim
 
- [*] YOUTUBE \e[1;31m>> \e[1;32myoutube.com/channel/UCE3QvczZXklHSAaRFwDLP5g\e[1;33m
-
- [*] GİTHUB \e[1;31m>> \e[1;32mgithub.com/termux-egitim
-
-		\e[0m
-
+\e[0m
 "
-}
-banner
