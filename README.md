@@ -1,4 +1,5 @@
 konumbulma
+//GÜNCELLEME1//
 
 Konum Bulma Aracı
 
