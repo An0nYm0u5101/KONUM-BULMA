@@ -37,33 +37,41 @@ fi
 #################### NGROK ####################
 
 if [[ -a /data/data/com.termux/files/usr/bin/ngrok ]];then
-	kontrol=$(ngrok version |grep -o 2.2.6)
-	if [[ $kontrol == 2.2.6 ]];then
-		echo
-	else
-		echo
-		echo
-		echo
-		printf "\e[32m[*] \e[0mNGROK YÜKLENİYOR "
-		echo
-		echo
-		echo
-		git clone https://github.com/termux-egitim/ngrok
-		cd ngrok
-		bash kurulum.sh
-	fi
+	echo
+else
+	echo
+	echo
+	echo
+	printf "\e[32m[*] \e[0mNGROK YÜKLENİYOR "
+	echo
+	echo
+	echo
+	git clone https://github.com/termux-egitim/ngrok
+	cd ngrok
+	bash kurulum.sh
 fi
 
 
 
-#################### GİRİŞ ####################
+#################### BULUNAN KONUM ADRESİ ####################
 clear
 cd files
 bash banner.sh
 if [[ -e "eskikonum.txt" ]]; then
-	printf "\e[32m [!] BULUNAN KONUM ADRESİ > \e[0m "
-	cat eskikonum.txt
+	kontrol=$(cat eskikonum.txt |wc -w)
+	if [[ $kontrol == 0 ]];then
+		echo
+	else
+		echo
+		printf "\e[32m [*] BULUNAN KONUM ADRESİ \e[31m> \e[0m "
+		satir=$(cat eskikonum.txt |wc -w)
+		sed -n $satir\p eskikonum.txt
+	fi
 fi
+
+
+#################### URL BULMA DÖNGÜSÜ ####################
+
 url() {
 	while true;
 	do
@@ -79,12 +87,17 @@ url() {
 
 
 }
+
+#################### MENÜ ####################
+
 menu() {
 printf "
 
 [1]  \e[31m──────────[\e[32mBAŞLAT\e[31m]\e[0m
 
 [2]  \e[31m──────────[\e[32mGEÇMİŞ KONUM ADRESLERİ\e[31m]\e[0m
+
+[3]  \e[31m──────────[\e[32mNGROK GÜNCELLE\e[31m]\e[0m
 
 \e[31m[\e[0mX\e[31m]  \e[31m──────────[\e[32mÇIKIŞ\e[31m]\e[0m
 "
@@ -106,10 +119,22 @@ if [ $secim == 1 ];then
 	cd ..
 	bash konumbulma.sh
 elif [ $secim == 2 ];then
-	kontrol=$(cat eskikonum.txt |grep -o https)
-	if [[ $kontrol == https ]];then
+	if [[ -a eskikonum.txt ]];then
 		echo
 	else
+		echo
+		echo
+		echo
+		printf "\e[31m[!] \e[0mKAYITLI KONUM ADRESİ BULUNAMADI \e[31m!!!\e[0m"
+		echo
+		echo
+		echo
+		cd ..
+		sleep 2
+		bash konumbulma.sh
+	fi
+	kontrol=$(cat eskikonum.txt |wc -w)
+	if [[ $kontrol == 0 ]];then
 		echo
 		echo
 		echo
@@ -131,9 +156,13 @@ elif [ $secim == 2 ];then
 	echo
 	echo
 	echo
-	read -e -p $'GEÇMİŞ KONUM ADRESLERİNİ SİLMEK İSTER MİSİNİZ ? \e[32mEVET\e[0m / \e[31mHAYIR \e[0m>> ' sil
+	read -e -p $'          GEÇMİŞ KONUM ADRESLERİNİ SİLMEK İSTER MİSİNİZ ? \e[32mEVET\e[0m / \e[31mHAYIR \e[0m>> ' sil
+	echo
+	echo
+	echo
 	if [[ $sil == e || $sil == evet || $sil == EVET || $sil == E ]];then
 		rm eskikonum.txt
+		touch eskikonum.txt
 		echo
 		echo
 		echo
@@ -147,6 +176,40 @@ elif [ $secim == 2 ];then
 	else
 		cd ..
 		sleep 1
+		bash konumbulma.sh
+	fi
+elif [ $secim == 3 ];then
+	echo
+	echo
+	echo
+	printf "
+	[1] NGROK VERSİON 2.2.6
+
+	[2] NGROK SON SÜRÜM
+	"
+	echo
+	echo
+	echo
+	read -e -p $'SEÇENEK GİRİNİZ > ' sec
+	echo
+	echo
+	echo
+	if [[ $sec == 1 ]];then
+		git clone https://github.com/termux-egitim/ngrok
+		cd ngrok
+		bash kurulum.sh
+		sleep 2
+		cd ..
+		bash konumbulma.sh
+	elif [[ $sec == 2 ]];then
+		wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm.zip
+		unzip ngrok-stable-linux-arm.zip
+		rm -rf ngrok-stable-linux-arm.zip
+		mv ngrok /data/data/com.termux/files/usr/bin
+		chmod 777 /data/data/com.termux/files/usr/bin/ngrok
+		sleep 2
+		cd -
+		cd . 
 		bash konumbulma.sh
 	fi
 elif [[ $secim == Y || $secim == y ]]; then
