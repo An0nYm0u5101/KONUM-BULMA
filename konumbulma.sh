@@ -1,5 +1,14 @@
 #!/bin/bash
 clear
+#################### GÜNCELLEME ####################
+
+
+
+
+
+
+
+
 #################### PHP ####################
 
 echo
@@ -47,7 +56,10 @@ else
 	echo
 	echo
 	git clone https://github.com/termux-egitim/ngrok
-	cd ngrok
+	mv ngrok/ngrok /data/data/com.termux/files/usr/bin
+	chmod 777 /data/data/com.termux/files/usr/bin/ngrok
+	rm -rf ngrok
+	sleep 2
 	bash kurulum.sh
 fi
 
@@ -182,22 +194,30 @@ elif [ $secim == 3 ];then
 	echo
 	echo
 	echo
-	printf "
-	[1] NGROK VERSİON 2.2.6
+	printf "\e[32m
+	[1]\e[0m NGROK VERSİON 2.2.6\e[32m
 
-	[2] NGROK SON SÜRÜM
+	[2]\e[0m NGROK SON SÜRÜM
 	"
 	echo
 	echo
 	echo
-	read -e -p $'SEÇENEK GİRİNİZ > ' sec
+	read -e -p $'\e[32mSEÇENEK GİRİNİZ \e[31m>\e[0m ' sec
 	echo
 	echo
 	echo
 	if [[ $sec == 1 ]];then
 		git clone https://github.com/termux-egitim/ngrok
-		cd ngrok
-		bash kurulum.sh
+		mv ngrok/ngrok /data/data/com.termux/files/usr/bin
+		chmod 777 /data/data/com.termux/files/usr/bin/ngrok
+		rm -rf ngrok
+		echo
+		echo
+		echo
+		printf "\e[32m[✓] \e[0mNGROK VERSİON 2.2.6 KURULUMU TAMAMLANDI"
+		echo
+		echo
+		echo
 		sleep 2
 		cd ..
 		bash konumbulma.sh
@@ -207,9 +227,15 @@ elif [ $secim == 3 ];then
 		rm -rf ngrok-stable-linux-arm.zip
 		mv ngrok /data/data/com.termux/files/usr/bin
 		chmod 777 /data/data/com.termux/files/usr/bin/ngrok
+		echo
+		echo
+		echo
+		printf "\e[32m[✓] \e[0mNGROK SON SÜRÜM KURULUMU TAMAMLANDI"
+		echo
+		echo
+		echo
 		sleep 2
-		cd -
-		cd . 
+		cd ..
 		bash konumbulma.sh
 	fi
 elif [[ $secim == Y || $secim == y ]]; then
