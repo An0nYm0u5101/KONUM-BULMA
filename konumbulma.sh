@@ -26,7 +26,7 @@ if [[ $1 == güncelle ]];then
 fi
 #################### OTOMATİK GÜNCEKLEME ####################
 
-guncelleme=$(curl -s "https://github.com/termux-egitim/KONUMBULMA" |grep -o 09.07.2020)
+guncelleme=$(curl -s "https://github.com/termux-egitim/KONUMBULMA" |grep -o 10.07.2020)
 readmi=$(sed -n 35p README.md |tr -d "Güncelleme ")
 if [[ "$guncelleme" = "$readmi" ]];then
 	echo
@@ -39,14 +39,13 @@ else
 	echo
 	echo
 	sleep 2
+	cd ..
 	if [[ -a konumbulma ]];then
-		cd ..
 		rm -rf konumbulma
 		git clone https://github.com/termux-egitim/konumbulma
 		exit
 	fi
 	if [[ -a KONUMBULNA ]];then
-		cd ..
 		rm -rf KONUMBULMA
 		git clone https://github.com/termux-egitim/konumbulma
 		exit
