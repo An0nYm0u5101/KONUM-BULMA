@@ -1,14 +1,46 @@
 #!/bin/bash
 clear
-#################### GÜNCELLEME ####################
+#################### GÜNCELLEME TARİHİ EKLEME ###################
+#
+if [[ $1 == güncelle ]];then
+	songuncelleme=$(sed -n 35p README.md |tr -d "Güncelleme ")
+	sed -ie "s/$2/$songuncelleme/g" konumbulma.sh
+	sed -ie "s/$2/$songuncelleme/g" README.md
+	exit
 
+fi
+#################### OTOMATİK GÜNCEKLEME ####################
 
-
-
-
-
-
-
+guncelleme=$(curl -s "https://github.com/termux-egitim/KONUMBULMA" |grep -o "10.07.2020")
+readmi=$(sed -n 35p README.md |tr -d "Güncelleme ")
+if [[ "$guncelle" = $readmi ]];then
+	echo
+else
+	echo
+	echo
+	echo
+	printf "\e[32m[*]\e[0m KONUM BULMA ARACI GÜNCELLENİYOR "
+	echo
+	echo
+	echo
+	sleep 2
+	rm -rf *
+	cd ..
+	if [[ -a konumbulma ]];then
+		cd ..
+		rm -rf konumbulma
+		git clone https://github.com/termux-egitim/konumbulma
+		termux-reload-settings
+		bash konumbulma.sh
+	fi
+	if [[ -a KONUMBULNA ]];then
+		cd ..
+		rm -rf KONUMBULMA
+		git clone https://github.com/termux-egitim/konumbulma
+		termux-reload-settings
+		bash konumbulma.sh
+	fi
+fi
 #################### PHP ####################
 
 echo

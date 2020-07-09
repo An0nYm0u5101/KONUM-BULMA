@@ -1,7 +1,5 @@
 konumbulma
 
-Güncelleme 10.07.2020
-
 Konum Bulma Aracı
 
 Sahte Oltama Yöntemi İle Nokta Atışı Konum Bilgisi Alma
@@ -34,6 +32,6 @@ bash konumbulma.sh
 
 X > Exit
 
-
+Güncelleme 10.07.2020
 
 
