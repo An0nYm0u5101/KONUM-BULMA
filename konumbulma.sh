@@ -39,13 +39,12 @@ else
 	echo
 	echo
 	sleep 2
-	rm -rf *
-	cd ..
 	if [[ -a konumbulma ]];then
 		cd ..
 		rm -rf konumbulma
 		git clone https://github.com/termux-egitim/konumbulma
 		termux-reload-settings
+		cd konumbulma
 		bash konumbulma.sh
 	fi
 	if [[ -a KONUMBULNA ]];then
@@ -53,6 +52,7 @@ else
 		rm -rf KONUMBULMA
 		git clone https://github.com/termux-egitim/konumbulma
 		termux-reload-settings
+		cd KONUMBULMA
 		bash konumbulma.sh
 	fi
 fi
