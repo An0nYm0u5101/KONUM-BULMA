@@ -28,7 +28,7 @@ fi
 
 guncelleme=$(curl -s "https://github.com/termux-egitim/KONUMBULMA" |grep -o 09.07.2020)
 readmi=$(sed -n 35p README.md |tr -d "Güncelleme ")
-if [[ "$guncelleme" = "$readmi" ]];then
+if [ "$guncelleme" = "$readmi" ];then
 	echo
 else
 	echo
