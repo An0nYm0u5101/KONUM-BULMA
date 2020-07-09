@@ -3,9 +3,22 @@ clear
 #################### GÜNCELLEME TARİHİ EKLEME ###################
 #
 if [[ $1 == güncelle ]];then
+	echo
+	echo
+	echo
+	read -e -p $'\e[32mTARİH GİRİNİZ \e[31m>\e[0m ' tarih
+	echo
+	echo
 	songuncelleme=$(sed -n 35p README.md |tr -d "Güncelleme ")
-	sed -ie "s/$2/$songuncelleme/g" konumbulma.sh
-	sed -ie "s/$2/$songuncelleme/g" README.md
+	sed -ie "s/$songuncelleme/$tarih/g" konumbulma.sh
+	songuncelleme2=$(sed -n 35p README.md |tr -d "Güncelleme ")
+	sed -ie "s/$songuncelleme2/$tarih/g" README.md
+	echo
+	echo
+	echo
+	printf "\e[32m[*]\e[0m TARİH GÜNCELLENDİ "
+	echo
+	echo
 	exit
 
 fi
@@ -13,7 +26,7 @@ fi
 
 guncelleme=$(curl -s "https://github.com/termux-egitim/KONUMBULMA" |grep -o 10.07.2020)
 readmi=$(sed -n 35p README.md |tr -d "Güncelleme ")
-if [[ "$guncelle" = "$readmi" ]];then
+if [[ "$guncelleme" = "$readmi" ]];then
 	echo
 else
 	echo
