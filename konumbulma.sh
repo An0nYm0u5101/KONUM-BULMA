@@ -153,7 +153,7 @@ printf "
 
 [3]  \e[31m──────────[\e[32mNGROK GÜNCELLE\e[31m]\e[0m
 
-\e[31m[\e[0mX\e[31m]  \e[31m──────────[\e[32mÇIKIŞ\e[31m]\e[0m
+\e[31m[\e[0mCTRL Z\e[31m]  \e[31m─────[\e[32mÇIKIŞ\e[31m]\e[0m
 "
 echo
 echo
@@ -287,18 +287,17 @@ elif [[ $secim == d || $secim == D ]]; then
 	cd ..
 	vim konumbulma.sh
 	bash konumbulma.sh
-elif [[ $secim == x || $secim == X || $secim == exit || $secim == EXİT ]];then
-	echo
-	echo
-	printf "                         \e[31m [!] \e[0mÇIKIŞ YAPILDI"
-	echo
-	echo
-	echo
-	echo
-	exit
 else
-	$secim
-	menu
+	echo
+	echo
+	echo
+	printf "\e[31m[!]\e[0m HATALI SEÇİM \e[31m!!!\e[0m"
+	echo
+	echo
+	echo
+	cd ..
+	sleep 2
+	bash konumbulma.sh
 fi
 }
 if [[ $1 == kur ]];then
@@ -331,6 +330,8 @@ if [[ $1 == kur ]];then
 			exit
 		fi
 	fi
+
+	
 fi
 menu
 
