@@ -43,15 +43,16 @@ else
 	echo
 	echo
 	sleep 2
-	cd ..
 	if [[ -a konumbulma ]];then
+		rm -rf *
+		rm -rf .git
+		git clone https://github.com/termux-egitim/konumbulma
+		cd konumbulma
+		mv * ../
+		mv .git ../
+		cd ..
 		rm -rf konumbulma
-		git clone https://github.com/termux-egitim/konumbulma
-		exit
-	fi
-	if [[ -a KONUMBULNA ]];then
-		rm -rf KONUMBULMA
-		git clone https://github.com/termux-egitim/konumbulma
+		ls
 		exit
 	fi
 fi
