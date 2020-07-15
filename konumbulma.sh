@@ -51,7 +51,13 @@ else
 	mv .git ../
 	cd ..
 	rm -rf konumbulma
+	echo
+	echo
+	echo
 	ls
+	echo
+	echo
+	echo
 	exit
 fi
 #################### PHP ####################
