@@ -10,6 +10,7 @@ if [[ $1 == güncelle || $1 == güncelleme ]];then
 	echo
 	echo
 	echo
+	history -s $(sed -n 35p README.md |tr -d "Güncelleme")
 	read -e -p $'\e[32mTARİH GİRİNİZ \e[31m>\e[0m ' tarih
 	echo
 	echo
@@ -51,14 +52,15 @@ else
 	mv .git ../
 	cd ..
 	rm -rf konumbulma
+	bash konumbulma.sh
 	echo
 	echo
 	echo
-	ls
+	#ls
 	echo
 	echo
 	echo
-	exit
+	#exit
 fi
 #################### PHP ####################
 
