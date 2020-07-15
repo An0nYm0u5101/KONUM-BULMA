@@ -32,6 +32,6 @@ bash konumbulma.sh
 
 X > Exit
 
-Güncelleme 14.09.2020
+Güncelleme 15.09.2020
 
 
