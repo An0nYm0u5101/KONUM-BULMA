@@ -6,6 +6,10 @@ if [[ $1 == güncelle || $1 == güncelleme ]];then
 	echo
 	echo
 	echo
+	printf "\e[33mSON GÜNCELLEME TARİHİ \e[31m>\e[0m $(sed -n 35p README.md |tr -d \"Güncelleme\")"
+	echo
+	echo
+	echo
 	read -e -p $'\e[32mTARİH GİRİNİZ \e[31m>\e[0m ' tarih
 	echo
 	echo
@@ -26,9 +30,9 @@ if [[ $1 == güncelle || $1 == güncelleme ]];then
 fi
 #################### OTOMATİK GÜNCEKLEME ####################
 
-guncelleme=$(curl -s "https://github.com/termux-egitim/KONUMBULMA" |grep -o 09.07.2020)
-readmi=$(sed -n 35p README.md |tr -d "Güncelleme ")
-if [ "$guncelleme" = "$readmi" ];then
+guncelleme=$(curl -s "https://github.com/termux-egitim/KONUMBULMA" |grep -o 15.09.2020)
+readme=$(sed -n 35p README.md |tr -d "Güncelleme ")
+if [ "$guncelleme" = "$readme" ];then
 	echo
 else
 	echo
