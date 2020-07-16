@@ -6,17 +6,17 @@ if [[ $1 == güncelle || $1 == güncelleme ]];then
 	echo
 	echo
 	echo
-	printf "\e[33mSON GÜNCELLEME TARİHİ \e[31m>\e[0m $(sed -n 35p README.md |tr -d \"Güncelleme\")"
+	printf "\e[33mSON GÜNCELLEME TARİHİ \e[31m>\e[0m $(sed -n 3p README.md |tr -d \"Güncelleme\")"
 	echo
 	echo
 	echo
-	history -s $(sed -n 35p README.md |tr -d "Güncelleme")
+	history -s $(sed -n 3p README.md |tr -d "Güncelleme")
 	read -e -p $'\e[32mTARİH GİRİNİZ \e[31m>\e[0m ' tarih
 	echo
 	echo
-	songuncelleme=$(sed -n 35p README.md |tr -d "Güncelleme ")
+	songuncelleme=$(sed -n 3p README.md |tr -d "Güncelleme ")
 	sed -ie "s/$songuncelleme/$tarih/g" konumbulma.sh
-	songuncelleme2=$(sed -n 35p README.md |tr -d "Güncelleme ")
+	songuncelleme2=$(sed -n 3p README.md |tr -d "Güncelleme ")
 	sed -ie "s/$songuncelleme2/$tarih/g" README.md
 	echo
 	echo
@@ -31,8 +31,8 @@ if [[ $1 == güncelle || $1 == güncelleme ]];then
 fi
 #################### OTOMATİK GÜNCEKLEME ####################
 
-guncelleme=$(curl -s "https://github.com/termux-egitim/KONUMBULMA" |grep -o 15.09.2020)
-readme=$(sed -n 35p README.md |tr -d "Güncelleme ")
+guncelleme=$(curl -s "https://github.com/termux-egitim/KONUMBULMA" |grep -o 16.09.2020)
+readme=$(sed -n 3p README.md |tr -d "Güncelleme ")
 if [ "$guncelleme" = "$readme" ];then
 	echo
 else
@@ -53,14 +53,6 @@ else
 	cd ..
 	rm -rf konumbulma
 	bash konumbulma.sh
-	echo
-	echo
-	echo
-	#ls
-	echo
-	echo
-	echo
-	#exit
 fi
 #################### PHP ####################
 

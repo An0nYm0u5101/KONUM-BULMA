@@ -1,4 +1,6 @@
 konumbulma
+KONUMBULMA
+Güncelleme 16.09.2020
 
 Konum Bulma Aracı
 
@@ -32,6 +34,5 @@ bash konumbulma.sh
 
 X > Exit
 
-Güncelleme 15.09.2020
 
 
