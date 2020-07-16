@@ -36,6 +36,25 @@ readme=$(sed -n 3p README.md |tr -d "Güncelleme ")
 if [ "$guncelleme" = "$readme" ];then
 	echo
 else
+	kontrol=$(curl -s https://github.com/termux-egitim/konumbulma |grep -o not-found |wc -w)
+	if [[ $kontrol == 0 ]];then
+		echo
+	else
+		echo
+		echo
+		echo
+		printf "\e[31m[!]\e[0mKONUM BULMA GÜNCELLEME YAPILAMIYOR \e[31m!!!\e[0m"
+		echo
+		echo
+		echo
+		echo
+		sleep 2
+		printf "\e[31m[!]\e[0m KONUM BULMA DEPOSU BULUNAMADI \e[31m!!!\e[0m"
+		echo
+		echo
+		echo
+		exit
+	fi
 	echo
 	echo
 	echo
