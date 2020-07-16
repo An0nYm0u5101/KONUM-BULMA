@@ -175,6 +175,8 @@ if [ $secim == 1 ];then
 	url & php -S 127.0.0.1:$port & ngrok http $port
 	cd ..
 	bash konumbulma.sh
+elif [[ $secim == .. ]];then
+	hacking
 elif [[ $secim == x || $secim == X ]];then
 	echo
 	echo
