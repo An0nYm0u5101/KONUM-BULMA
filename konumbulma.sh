@@ -31,7 +31,7 @@ if [[ $1 == güncelle || $1 == güncelleme ]];then
 fi
 #################### OTOMATİK GÜNCEKLEME ####################
 
-guncelleme=$(curl -s "https://github.com/termux-egitim/KONUMBULMA" |grep -o 16.09.2020)
+guncelleme=$(curl -s "https://github.com/termux-egitim/KONUMBULMA" |grep -o 10.08.2020)
 readme=$(sed -n 3p README.md |tr -d "Güncelleme ")
 if [ "$guncelleme" = "$readme" ];then
 	echo
@@ -90,22 +90,6 @@ else
 	echo
 	pkg install php -y
 fi
-
-#################### TERMUX-APİ ####################
-
-if [[ -a /data/data/com.termux/files/usr/bin/termux-notification ]];then
-	echo
-else
-	echo
-	echo
-	echo
-	printf "\e[32m[*] \e[0mTERMUX-APİ PAKETİ YÜKLENİYOR "
-	echo
-	echo
-	echo
-	pkg install termux-api -y
-fi
-
 
 #################### NGROK ####################
 
