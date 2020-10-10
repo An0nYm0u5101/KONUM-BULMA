@@ -51,8 +51,9 @@ $renk2
                                     \e[33mSON GÜNCELLEME :\e[0m $(cd .. && sed -n 3p README.md |tr -d "Güncelleme ")
            \e[31m////////// \e[32mTERMUX EĞİTİM \e[31m//////////\e[32m
    
-           Coded By  \e[31m>\e[0m UMUT_KARA\e[32m
-           İNSTAGRAM \e[31m>\e[0m termuxegitim\e[32m
+           Coded By  \e[31m>\e[0m UmuT KaRa\e[32m
+	   TELEGRAM  \e[31m>\e[0m @termuxegitimm\e[32m
+           İNSTAGRAM \e[31m>\e[0m @termuxegitim\e[32m
            GİTHUB    \e[31m>\e[0m termux-egitim
 
 \e[0m
