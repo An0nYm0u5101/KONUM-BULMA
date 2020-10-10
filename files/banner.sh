@@ -30,7 +30,7 @@ elif [[ $cuma == Fri ]];then
 elif [[ $cumartesi == Sat ]];then
 	renk1='\e[31m'
 	renk2='\e[34m'
-elif [[ $oazar == Sun ]];then
+elif [[ $pazar == Sun ]];then
 	renk1='\e[33m'
 	renk2='\e[34m'
 fi
@@ -48,7 +48,7 @@ $renk2
                      |_____] |     | |      |  |  | |_____|
                      |_____] |_____| |_____ |  |  | |     |
 
-
+                                    \e[33mSON GÜNCELLEME :\e[0m $(cd .. && sed -n 3p README.md |tr -d "Güncelleme ")
            \e[31m////////// \e[32mTERMUX EĞİTİM \e[31m//////////\e[32m
    
            Coded By  \e[31m>\e[0m UMUT_KARA\e[32m
