@@ -54,7 +54,8 @@ $renk2
            Coded By  \e[31m>\e[0m UmuT KaRa\e[32m
 	   TELEGRAM  \e[31m>\e[0m @termuxegitimm\e[32m
            İNSTAGRAM \e[31m>\e[0m @termuxegitim\e[32m
-           GİTHUB    \e[31m>\e[0m termux-egitim
+           GİTHUB    \e[31m>\e[0m termux-egitim\e[32m
+	   YOUTUBE   \e[31m>\e[0m termux-egitim
 
 \e[0m
 "
