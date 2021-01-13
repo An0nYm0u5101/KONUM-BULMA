@@ -40,22 +40,31 @@ fi
 printf "
 $renk1
 
-      _     _  _____  __   _ _     _ _______
-      |____/  |     | | \  | |     | |  |  |
-      |    \_ |_____| |  \_| |_____| |  |  |
+ _     _  _____  __   _ _     _ _______
+ |____/  |     | | \  | |     | |  |  |
+ |    \_ |_____| |  \_| |_____| |  |  |
+                                       
 $renk2
-                     ______  _     _        _______ _______
-                     |_____] |     | |      |  |  | |_____|
-                     |_____] |_____| |_____ |  |  | |     |
+ ______  _     _        _______ _______
+ |_____] |     | |      |  |  | |_____|
+ |_____] |_____| |_____ |  |  | |     |
+                                       
 
-                                    \e[33mSON GÜNCELLEME :\e[0m $(cd .. && sed -n 3p README.md |tr -d "Güncelleme ")
-           \e[31m////////// \e[32mTERMUX EĞİTİM \e[31m//////////\e[32m
-   
-           Coded By  \e[31m>\e[0m UmuT KaRa\e[32m
-	   TELEGRAM  \e[31m>\e[0m @termuxegitimm\e[32m
-           İNSTAGRAM \e[31m>\e[0m @termuxegitim\e[32m
-           GİTHUB    \e[31m>\e[0m termux-egitim\e[32m
-	   YOUTUBE   \e[31m>\e[0m termux-egitim
+                         \e[33mSON GÜNCELLEME :\e[0m $(cd .. && sed -n 3p README.md |tr -d "Güncelleme ")\e[32m
+  \e[1;97m+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ >>
+  \e[33m|C|O|D|E|D| |B|Y| |U|M|U|T| |K|A|R|A|
+  \e[97m+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ >>\e[0m
+                                                  
 
-\e[0m
+  \e[97m██████████ \e[33m[\e[32m GİTHUB \e[33m>>\e[32m https://github.com/termux-egitim \e[33m]
+
+  \e[97m███████████████ \e[33m[\e[32m TELEGRAM \e[33m>>\e[32m https://t.me/termuxegitimm \e[33m]
+
+  \e[97m████████████████████ \e[33m[\e[32m İNSTAGRAM \e[33m>>\e[32m https://www.instagram.com/termuxegitim \e[33m]
+
+  \e[97m█████████████████████████ \e[33m[\e[32m YOUTUBE \e[33m>>\e[32m https://youtube.com/channel/UCE3QvczZXklHSAaRFwDLP5g \e[33m]\e[0m
+
+
+
 "
+
