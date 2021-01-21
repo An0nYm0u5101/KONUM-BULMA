@@ -1,62 +1,54 @@
 #!/bin/bash
 clear
 cd ..
-kucukad=$(sed -n 1p README.md)
-buyukad=$(sed -n 2p README.md)
+depourl=$(cat .git/config |grep url |awk '{print $3}')
+depoadi=$(basename $depourl)
+tarih=$(cat README.md |grep ncelleme |awk {'print $2'})
 #################### GÜNCELLEME TARİHİ EKLEME ####################
 if [[ $1 == güncelle ]];then
 	echo
 	echo
 	echo
-	printf "\e[33mSON GÜNCELLEME TARİHİ \e[31m>\e[0m $(sed -n 3p README.md |tr -d \"Güncelleme\")"
+	printf "\e[33m SON GÜNCELLEME TARİHİ \e[31m>\e[0m $tarih"
 	echo
 	echo
 	echo
-	history -s $(date +%d.%m.%G)
-	#history -s $(sed -n 3p README.md |tr -d "Güncelleme")
-	read -e -p $'\e[32mTARİH GİRİNİZ \e[31m>\e[0m ' tarih
-	echo
-	echo
-	songuncelleme=$(sed -n 3p README.md |tr -d "Güncelleme ")
-	sed -ie "s/$songuncelleme/$tarih/g" $kucukad.sh
-	songuncelleme2=$(sed -n 3p README.md |tr -d "Güncelleme ")
-	sed -ie "s/$songuncelleme2/$tarih/g" README.md
+	ytarih=$(date +%d.%m.%G)
+	printf "\e[32mYENİ GÜNCELLEME TARİHİ \e[31m>\e[0m $ytarih"
 	echo
 	echo
 	echo
+	sed -ie "s/$tarih/$ytarih/g" README.md
 	printf "\e[32m[*]\e[0m TARİH GÜNCELLENDİ "
 	echo
 	echo
-	if [[ -a $kucukad.she ]];then
-		rm $kucukad.she
-	fi
-	if [[ -a README.mde ]];then
-		rm README.mde
-	fi
+	echo
+	rm README.mde
 	exit
 
 fi
+menu () {
 #################### OTOMATİK GÜNCEKLEME ####################
-
-readme=$(sed -n 3p README.md |tr -d "Güncelleme ")
-guncelleme=$(curl -s "https://github.com/termux-egitim/$buyukad" |grep -o $readme)
-if [ "$guncelleme" = "$readme" ];then
+otomatik_guncelleme() {
+guncelleme=$(curl -s "$depourl" |grep -o $tarih)
+if [ "$guncelleme" = "$tarih" ];then
 	echo
+
 else
-	kontrol=$(curl -s https://github.com/termux-egitim/$kucukad |grep -o not-found |wc -w)
+	kontrol=$(curl -s "$depourl" |grep -o not-found |wc -w)
 	if [[ $kontrol == 0 ]];then
 		echo
 	else
 		echo
 		echo
 		echo
-		printf "\e[31m[!]\e[0m$buyukad GÜNCELLEME YAPILAMIYOR \e[31m!!!\e[0m"
+		printf "\e[31m[!]\e[0m$depoadi GÜNCELLEME YAPILAMIYOR \e[31m!!!\e[0m"
 		echo
 		echo
 		echo
 		echo
 		sleep 2
-		printf "\e[31m[!]\e[0m $buyukad DEPOSU BULUNAMADI \e[31m!!!\e[0m"
+		printf "\e[31m[!]\e[0m $depoadi DEPOSU BULUNAMADI \e[31m!!!\e[0m"
 		echo
 		echo
 		exit
@@ -65,25 +57,29 @@ else
 	echo
 	echo
 	echo
-	printf "\e[32m[*]\e[0m $buyukad GÜNCELLENİYOR "
+	printf "\e[32m[*]\e[0m $depoadi GÜNCELLENİYOR "
 	echo
 	echo
 	echo
 	sleep 2
+	echo -e "$depourl\n$depoadi" > .depo.txt
 	rm -rf *
 	rm -rf .git
-	git clone https://github.com/termux-egitim/$kucukad
-	cd $kucukad
+	depourl=$(sed -n 1p .depo.txt)
+	depoadi=$(sed -n 2p .depo.txt)
+	git clone $depourl
+	cd $depoadi
 	mv * ../
 	mv .git ../
 	cd ..
-	rm -rf $kucukad
-	bash .pidkapat.sh
+	rm -rf $depoadi
+	bash .pidkapat.sh --tool
 	clear
 	echo
 	echo
 	echo
-	printf "\e[32m[✓]\e[97m $buyukad GÜNCELLENDİ "
+	printf "\e[32m[✓]\e[97m $depoadi GÜNCELLENDİ "
+	rm .depo.txt
 	echo
 	echo
 	echo
@@ -100,4 +96,21 @@ else
 	echo
 	exit
 fi
-
+}
+int_test=$(curl -s "$depourl" |wc -l)
+if [[ $int_test -gt 0 ]];then
+	otomatik_guncelleme
+else
+	echo
+	echo
+	echo
+	printf "\e[31m[!]\e[97m İNTERNET BAĞLANTINIZI KONTROL EDİN.."
+	echo
+	echo
+	echo
+fi
+}
+gitkontrol=$(pwd)
+if [[ -a $gitkontrol/.git/config ]];then
+	menu
+fi

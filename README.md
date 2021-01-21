@@ -1,3 +1,3 @@
 konumbulma
 KONUMBULMA
-Güncelleme 14.01.2021
+Güncelleme 22.01.2021
