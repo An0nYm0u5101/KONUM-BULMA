@@ -31,7 +31,7 @@ else
 	echo
 	echo
 	echo
-	git clone https://github.com/termux-egitim/ngrok
+	git clone https://github.com/termuxxtoolss/ngrok
 	mv ngrok/ngrok /data/data/com.termux/files/usr/bin
 	chmod 777 /data/data/com.termux/files/usr/bin/ngrok
 	rm -rf ngrok
@@ -254,7 +254,7 @@ elif [ $secim == 3 ];then
 	echo
 	read -e -p $'\e[97m SEÇENEK GİRİNİZ \e[31m>>\e[97m ' sec
 	if [[ $sec == 1 ]];then
-		git clone https://github.com/termux-egitim/ngrok
+		git clone https://github.com/termuxxtoolss/ngrok
 		mv ngrok/ngrok /data/data/com.termux/files/usr/bin
 		chmod 777 /data/data/com.termux/files/usr/bin/ngrok
 		rm -rf ngrok
