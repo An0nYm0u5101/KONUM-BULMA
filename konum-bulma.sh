@@ -161,16 +161,50 @@ elif [[ $secim == x || $secim == X ]];then
 	exit
 elif [ $secim == 4 ];then
 	cd ..
-	bash .pidkapat.sh --tümü
-	echo
-	echo
-	echo
-	printf "\e[32m[✓]\e[97m BAĞLANTI KESİLDİ\e[0m"
-	echo
-	echo
-	echo
-	sleep 2
-	bash konum-bulma.sh
+	kontrol=$(ps aux |grep "php" |grep -v grep |grep -v index |awk '{print $2}' |wc -l)
+	if [[ $kontrol == 1 ]];then
+		killall php
+		echo
+		echo
+		echo
+		printf "\e[32m[✓] \e[33mPHP\e[97m ARKAPLANDAN KAPATILDI"
+		echo
+		echo
+		echo
+	else
+		echo
+		echo
+		echo
+		printf "\e[31m[*] \e[33mPHP\e[97m ARKAPLANDA ÇALIŞMIYOR"
+		echo
+		echo
+		echo
+	fi
+	kontrol=$(ps aux |grep "ngrok" |grep -v grep |grep -v index |awk '{print $2}' |wc -l)
+	if [[ $kontrol == 1 ]];then
+		killall ngrok
+		echo
+		echo
+		echo
+		printf "\e[32m[✓] \e[33mNGROK\e[97m ARKAPLANDAN KAPATILDI"
+		echo
+		echo
+		echo
+		sleep 2
+		bash konum-bulna.sh
+		exit
+	else
+		echo
+		echo
+		echo
+		printf "\e[31m[*] \e[33mNGROK\e[97m ARKAPLANDA ÇALIŞMIYOR"
+		echo
+		echo
+		echo
+		sleep 2
+		bash konum-bulna.sh
+		exit
+	fi
 elif [ $secim == 2 ];then
 	if [[ -a eskikonum.txt ]];then
 		kontrol=$(cat eskikonum.txt |wc -w)
