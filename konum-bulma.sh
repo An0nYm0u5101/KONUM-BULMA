@@ -114,7 +114,7 @@ if [ $secim == 1 ];then
 		echo
 		url
 		cd ..
-		bash konumbulma.sh
+		bash konum-bulma.sh
 	else
 		echo
 		echo
@@ -147,7 +147,7 @@ if [ $secim == 1 ];then
 		echo
 		url
 		cd ..
-		bash konumbulma.sh
+		bash konum-bulma.sh
 	fi
 
 elif [[ $secim == x || $secim == X ]];then
@@ -160,7 +160,8 @@ elif [[ $secim == x || $secim == X ]];then
 	echo
 	exit
 elif [ $secim == 4 ];then
-	bash bg_kapat.sh
+	cd ..
+	bash .pidkapat.sh --tümü
 	echo
 	echo
 	echo
@@ -168,9 +169,8 @@ elif [ $secim == 4 ];then
 	echo
 	echo
 	echo
-	cd ..
 	sleep 2
-	bash konumbulma.sh
+	bash konum-bulma.sh
 elif [ $secim == 2 ];then
 	if [[ -a eskikonum.txt ]];then
 		kontrol=$(cat eskikonum.txt |wc -w)
@@ -198,7 +198,7 @@ elif [ $secim == 2 ];then
 				echo
 				cd ..
 				sleep 2
-				bash konumbulma.sh
+				bash konum-bulma.sh
 			elif [[ $sil == h || $sil == H ]];then
 				echo
 				echo
@@ -209,7 +209,7 @@ elif [ $secim == 2 ];then
 				echo
 				cd ..
 				sleep 2
-				bash konumbulma.sh
+				bash konum-bulma.sh
 			else
 				echo
 				echo
@@ -221,7 +221,7 @@ elif [ $secim == 2 ];then
 				echo
 				cd ..
 				sleep 2
-				bash konumbulma.sh
+				bash konum-bulma.sh
 			fi
 		else
 			echo
@@ -233,7 +233,7 @@ elif [ $secim == 2 ];then
 			echo
 			cd ..
 			sleep 2
-			bash konumbulma.sh
+			bash konum-bulma.sh
 			
 
 
@@ -267,7 +267,7 @@ elif [ $secim == 3 ];then
 		echo
 		sleep 2
 		cd ..
-		bash konumbulma.sh
+		bash konum-bulma.sh
 	elif [[ $sec == 2 ]];then
 		wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm.zip
 		unzip ngrok-stable-linux-arm.zip
@@ -283,7 +283,7 @@ elif [ $secim == 3 ];then
 		echo
 		sleep 2
 		cd ..
-		bash konumbulma.sh
+		bash konum-bulma.sh
 	else
 		echo
 		echo
@@ -294,7 +294,7 @@ elif [ $secim == 3 ];then
 		echo
 		cd ..
 		sleep 2
-		bash konumbulma.sh
+		bash konum-bulma.sh
 	fi
 else
 	echo
@@ -306,5 +306,5 @@ else
 	echo
 	cd ..
 	sleep 2
-	bash konumbulma.sh
+	bash konum-bulma.sh
 fi
