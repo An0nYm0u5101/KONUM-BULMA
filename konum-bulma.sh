@@ -86,7 +86,7 @@ printf "
 
 \e[31m[\e[97m3\e[31m]\e[97m ────────── \e[32mNGROK GÜNCELLE\e[97m
 
-\e[31m[\e[97m4\e[31m]\e[97m ────────── \e[32mPHP & NGROK BAĞLANTIYI KES\e[97m
+\e[31m[\e[97m4\e[31m]\e[97m ────────── \e[33mPHP & NGROK BAĞLANTIYI KES\e[97m
 
 \e[31m[\e[97mX\e[31m]\e[97m ────────── \e[31mÇIKIŞ\e[0m
 "
