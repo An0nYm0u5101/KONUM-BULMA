@@ -87,6 +87,11 @@ url() {
 			link=$(cat konum.txt)
 			xdg-open $link
 			rm konum.txt
+			kontrol=$(ps aux |grep "ngrok" |grep -v grep |grep -o ngrok)
+			if [[ $kontrol == ngrok ]];then
+				killall ngrok
+				killall php
+			fi
 			break
 
 
@@ -120,8 +125,6 @@ printf "
 \e[31m[\e[97m2\e[31m]\e[97m ────────── \e[32mBULUNAN ESKİ KONUMLAR\e[97m
 
 \e[31m[\e[97m3\e[31m]\e[97m ────────── \e[32mNGROK GÜNCELLE\e[97m
-
-\e[31m[\e[97m4\e[31m]\e[97m ────────── \e[33mPHP & NGROK BAĞLANTIYI KES\e[97m
 
 \e[31m[\e[97mX\e[31m]\e[97m ────────── \e[31mÇIKIŞ\e[0m
 "
@@ -194,7 +197,7 @@ elif [[ $secim == x || $secim == X ]];then
 	echo
 	echo
 	exit
-elif [ $secim == 4 ];then
+elif [[ $secim == k || $secim == K ]];then
 	cd ..
 	kontrol=$(ps aux |grep "php" |grep -v grep |grep -v index |awk '{print $2}' |wc -l)
 	if [[ $kontrol == 1 ]];then
