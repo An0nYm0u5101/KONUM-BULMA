@@ -5,6 +5,19 @@ if [[ $1 == güncelle ]];then
 	bash güncelleme.sh güncelle
 	exit
 fi
+
+#################### CURL ####################
+kontrol=$(which curl |wc -l)
+if [[ $kontrol == 0 ]];then
+	echo
+	echo
+	echo
+	printf "\e[32m[✓]\e[97m CURL PAKETİ KURLUYOR"
+	echo
+	echo
+	echo
+	pkg install curl -y
+fi
 #################### PHP ####################
 if [[ -a /data/data/com.termux/files/usr/bin/php ]];then
 	echo
@@ -12,7 +25,7 @@ else
 	echo
 	echo
 	echo
-	printf "\e[32m[*] \e[0mPHP PAKETİ YÜKLENİYOR "
+	printf "\e[32m[*] \e[0mPHP PAKETİ KURULUYOR "
 	echo
 	echo
 	echo
@@ -20,14 +33,12 @@ else
 fi
 
 #################### NGROK ####################
-
-if [[ -a /data/data/com.termux/files/usr/bin/ngrok ]];then
-	echo
-else
+kontrol=$(which ngrok |wc -l)
+if [[ $kontrol == 0 ]];then
 	echo
 	echo
 	echo
-	printf "\e[32m[*] \e[0mNGROK YÜKLENİYOR "
+	printf "\e[33m[*] \e[0mNGROK YÜKLENİYOR "
 	echo
 	echo
 	echo
@@ -35,11 +46,24 @@ else
 	mv ngrok/ngrok /data/data/com.termux/files/usr/bin
 	chmod 777 /data/data/com.termux/files/usr/bin/ngrok
 	rm -rf ngrok
-	sleep 2
-	bash kurulum.sh
+else
+	kontrol=$(ngrok version |awk -F 'version ' {'print $2'})
+	if [[ $kontrol != 2.2.6 ]];then
+		rm $PREFIX/bin/ngrok
+		echo
+		echo
+		echo
+		printf "\e[33m[*] \e[0mNGROK YÜKLENİYOR "
+		echo
+		echo
+		echo
+		git clone https://github.com/termuxxtoolss/ngrok
+		mv ngrok/ngrok /data/data/com.termux/files/usr/bin
+		chmod 777 /data/data/com.termux/files/usr/bin/ngrok
+		rm -rf ngrok
+	fi
+
 fi
-
-
 
 #################### BULUNAN KONUM ADRESİ ####################
 bulunan () {
@@ -77,6 +101,17 @@ url() {
 cd files
 bash güncelleme.sh
 bash banner.sh
+function finish() {
+	kontrol=$(ps aux |grep "ngrok" |grep -v grep |grep -o ngrok)
+	if [[ $kontrol == ngrok ]];then
+		killall ngrok
+		killall php
+	fi
+	exit
+}
+stty susp ""
+stty eof ""
+trap finish SIGINT
 bulunan
 printf "
 
