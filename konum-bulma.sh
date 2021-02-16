@@ -229,7 +229,7 @@ elif [[ $secim == k || $secim == K ]];then
 		echo
 		echo
 		sleep 2
-		bash konum-bulna.sh
+		bash konum-bulma.sh
 		exit
 	else
 		echo
@@ -240,7 +240,7 @@ elif [[ $secim == k || $secim == K ]];then
 		echo
 		echo
 		sleep 2
-		bash konum-bulna.sh
+		bash konum-bulma.sh
 		exit
 	fi
 elif [ $secim == 2 ];then
