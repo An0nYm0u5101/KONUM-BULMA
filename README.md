@@ -1,6 +1,6 @@
 konum-bulma
 
-Güncelleme 16.02.2021
+Güncelleme 14.04.2021
 
 GİTHUB    : https://github.com/termuxxtoolss
 
