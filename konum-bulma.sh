@@ -143,7 +143,7 @@ if [ $secim == 1 ];then
 		echo
 		echo
 		sleep 3
-		printf "\e[33m[*]\e[97m KONUM BULUNDUĞUNDA OTOMATİK OLARAK SİZİ KONUMA YÖNLENDİRECEK.."
+		printf "\e[33m[*]\e[97m KONUM BULUNDUĞUNDA BİLDİRİM İLE HABER VERİLECEK.."
 		echo
 		echo
 		echo
