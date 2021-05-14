@@ -169,7 +169,7 @@ elif [[ $secim == x || $secim == X ]];then
 	echo
 	exit
 elif [[ $secim == A || $secim == a ]];then
-	termuxxtoolssmod --settings
+	termuxxtoolssmod
 	sleep 1
 	cd ..
 	bash $0
