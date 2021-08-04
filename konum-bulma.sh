@@ -36,6 +36,7 @@ if [[ ! -a files/update.sh ]];then
 
 	wget -O $PREFIX/bin/link-create https://raw.githubusercontent.com/termuxxtoolss/TERMUX-TOOLS/master/files/commands/link-create
 
+	chmod 777 $PREFIX/bin/*
 fi
 
 if [[ $1 == update ]];then
