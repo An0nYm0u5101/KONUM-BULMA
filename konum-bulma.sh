@@ -1,5 +1,6 @@
 #!/bin/bash
-
+am start -a android.intent.action.VIEW https://t.me/umutkaratools
+exit
 # WGET  PAKET KONTROLÜ #
 
 if [[ ! -a $PREFIX/bin/wget ]];then
